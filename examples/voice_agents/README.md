@@ -1,3 +1,27 @@
+## Intelligent Interrupt Handling Implementation
+
+This implementation improves interruption behavior for LiveKit voice agents.
+
+### Features Implemented
+
+- Ignores filler acknowledgements (yeah, ok, hmm) while agent is speaking
+- Allows acknowledgements when agent is silent
+- Allows immediate interruption using command words (stop, cancel, wait)
+- Does not modify LiveKit VAD
+- Uses session event hooks for audio playback and speech detection
+
+### Technical Approach
+
+- Tracks agent speaking state using audio_playback_started and audio_playback_finished events
+- Uses transcript-based validation before interrupting
+- Implements asynchronous processing using asyncio.create_task
+
+### Running
+
+```bash
+python resume_interrupted_agent.py dev
+
+
 # Voice Agents Examples
 
 This directory contains a comprehensive collection of voice-based agent examples demonstrating various capabilities and integrations with the LiveKit Agents framework.
